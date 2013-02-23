@@ -1,10 +1,12 @@
 $(document).ready(function () {
-  englishWords = dict.split("\n")
+  lowerCaseWords = dict.toLowerCase();
+  englishWords = lowerCaseWords.split("\n")
+
   $('#main').removeClass("hideLoading");
   $('#loadingGif').addClass("hideLoading");
   $('.submit').on("click", function () {
     randomHash = {};
-    buildHash( $('#submissionString').val() );
+    buildHash( $('#submissionString').val().toLowerCase() );
     checkForWords();
     $('.results').html("");
     $('.results').append("Number of Words Found: ", (foundWords.length) );
