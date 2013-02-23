@@ -7,7 +7,7 @@ $(document).ready(function () {
     buildHash( $('#submissionString').val() );
     checkForWords();
     $('.results').html("");
-    $('.results').append("Number of Words Found: ", (foundWords.length-1) );
+    $('.results').append("Number of Words Found: ", (foundWords.length) );
     $('.results').append("<input id='showWords' type='button' value='Show Words'/>");
     $('.results').append("<div class='wordList'></div>")
     addShowWordsListener();
