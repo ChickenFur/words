@@ -1,5 +1,7 @@
 $(document).ready(function () {
-  getWords();
+  englishWords = dict.split("\n")
+  $('#main').removeClass("hideLoading");
+  $('#loadingGif').addClass("hideLoading");
   $('.submit').on("click", function () {
     randomHash = {};
     buildHash( $('#submissionString').val() );
@@ -12,20 +14,10 @@ $(document).ready(function () {
   });
 
 })
+
 var englishWords = [];
 var randomHash = {};
 var foundWords = [];
-
-//Get the words from the website and populate our trieStructure
-var getWords = function(){
-  $.ajax({url:"/words",
-          success: function(data){
-            data = data.toLowerCase();
-            englishWords = data.split("\n")
-            $('#main').removeClass("hideLoading");
-            $('#loadingGif').addClass("hideLoading");
-          }});
-};
 var buildHash = function (inputString){
   randomHash = {};
    _.each(inputString, function (value){
@@ -37,6 +29,7 @@ var buildHash = function (inputString){
   });
 }
 var checkForWords = function (){
+  foundWords = [];
   for(var i = 0; i < englishWords.length; i++){
     var copyOfRandomHash = Object.create( randomHash);
     for(var k = 0; k < englishWords[i].length; k++){
@@ -58,6 +51,7 @@ var checkForWords = function (){
 
 var addShowWordsListener = function (){
   $('#showWords').on("click", function(){
+    $('.wordList').html("");
     for(var i = 0; i < foundWords.length; i++){
       $('.wordList').append("<div class='indWord'>" + foundWords[i]+  "</div>");
     }
