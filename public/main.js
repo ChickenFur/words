@@ -1,5 +1,5 @@
-var trieStructure = makeTrieStructure();
-var foundWords = [];
+var englishWords = makeTrieStructure();
+var randomStringStruct = makeTrieStructure();
 
 //Get the words from the website and populate our trieStructure
 var getWords = function(){
@@ -7,7 +7,7 @@ var getWords = function(){
           success: function(data){
             data = data.toLowerCase();
             arrayOfWords = data.split("\n")
-            trieStructure.populate(arrayOfWords);
+            englishWords.populate(arrayOfWords);
           }});
 };
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
   getWords();
 
   $('.submit').on("click", function () {
-    wordsInString( $('#submissionString').val() );
+    ( $('#submissionString').val() );
   });
 
 })
