@@ -1,8 +1,5 @@
 $(document).ready(function () {
   getWords();
-
-
-
   $('.submit').on("click", function () {
     randomHash = {};
     buildHash( $('#submissionString').val() );
@@ -13,7 +10,6 @@ $(document).ready(function () {
     $('.results').append("<div class='wordList'></div>")
     addShowWordsListener();
   });
-
 
 })
 var englishWords = [];
@@ -26,7 +22,6 @@ var getWords = function(){
           success: function(data){
             data = data.toLowerCase();
             englishWords = data.split("\n")
-            debugger;
             $('#main').removeClass("hideLoading");
             $('#loadingGif').addClass("hideLoading");
           }});
