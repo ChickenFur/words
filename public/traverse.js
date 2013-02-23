@@ -1,6 +1,10 @@
 var wordsInString = function(testString) {
   _.each(testString, function (value, index, object) {
-    console.log(value);
+    //find nodes with n letter
+    
+    //if node is word then we found one
+
+    //find nodes with n + n letter
 
 
 
