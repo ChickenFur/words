@@ -27,6 +27,7 @@ var getWords = function(){
           }});
 };
 var buildHash = function (inputString){
+  randomHash = {};
    _.each(inputString, function (value){
     if(!randomHash[value]){
       randomHash[value] = 1;
@@ -37,8 +38,14 @@ var buildHash = function (inputString){
 }
 var checkForWords = function (){
   for(var i = 0; i < englishWords.length; i++){
+    var copyOfRandomHash = Object.create( randomHash);
     for(var k = 0; k < englishWords[i].length; k++){
-      if(randomHash[englishWords[i][k]]){
+      if(copyOfRandomHash[englishWords[i][k]]){
+        if( copyOfRandomHash[englishWords[i][k]] === 1 ){ 
+          copyOfRandomHash[englishWords[i][k]] = undefined;
+        }else{
+          copyOfRandomHash[englishWords[i][k]] -= 1;
+        }
         if(k === (englishWords[i].length -1) ){
           foundWords.push(englishWords[i]);       
         }
